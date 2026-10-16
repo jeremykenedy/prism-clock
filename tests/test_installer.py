@@ -471,6 +471,19 @@ class InstallerTest(unittest.TestCase):
         with patch.object(sys.stdout, "isatty", return_value=False):
             self.assertEqual("title", install.color("title", "1;36"))
 
+    def test_interruption_returns_cancelled_without_a_traceback(self):
+        errors = io.StringIO()
+        with (
+            patch.object(sys, "argv", ["install.py"]),
+            patch("builtins.input", side_effect=KeyboardInterrupt),
+            redirect_stderr(errors),
+        ):
+            with self.assertRaises(SystemExit) as result:
+                runpy.run_path(str(install.ROOT / "install.py"), run_name="__main__")
+        self.assertEqual(130, result.exception.code)
+        self.assertIn("Cancelled", errors.getvalue())
+        self.assertNotIn("No device changes", errors.getvalue())
+
     def test_command_entrypoint_success_and_failure(self):
         success = type("Result", (), {"returncode": 0, "stdout": "Success", "stderr": ""})()
         device_list = type(

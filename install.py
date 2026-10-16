@@ -294,6 +294,9 @@ def main():
 if __name__ == "__main__":
     try:
         raise SystemExit(main())
+    except KeyboardInterrupt as error:
+        print("\n  Cancelled. Check the TV if installation had already started.\n", file=sys.stderr)
+        raise SystemExit(130) from error
     except (OSError, RuntimeError) as error:
         print(f"\n  Failed: {error}\n", file=sys.stderr)
         raise SystemExit(1) from error

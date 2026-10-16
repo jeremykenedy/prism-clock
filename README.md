@@ -11,7 +11,7 @@
 
 Show some love by [starring this repository on GitHub](https://github.com/jeremykenedy/prism-clock).
 
-Prism Clock is currently an unpublished development candidate. The corrected rendering is awaiting native review. There is no release to download and it has not been registered in Fire TV Toolkit or Fire TV UI yet.
+Prism Clock is currently an unreleased development candidate. The current scene has passed its initial native rendering and Dream checks; full settings, playback, physical-device and release gates remain pending. There is no release to download and it has not been registered in Fire TV Toolkit or Fire TV UI yet.
 
 ## Table of Contents
 
@@ -87,7 +87,7 @@ Prism Clock is not registered yet. Exact `prism-clock` install/select/update/rem
 
 | Environment | Resolution | Verified behavior | Status |
 | --- | --- | --- | --- |
-| Google TV API 34 emulator, host GPU | Actual 1920x1080 capture | First candidate preview, changing surface and clock, settings screen, Back, unchanged secure Dream/timer state | Partial; corrected seam/reflection candidate pending review |
+| Google TV API 34 emulator, host GPU | Actual 1920x1080 capture | Current silver/champagne/iridescent rendering, actual bound Dream, remote preview/Back/Home, settings provider and unchanged secure Dream/timer state | Partial; final settings/playback and physical gates pending |
 | Physical Fire TV | Unverified | None claimed | Device gate pending |
 | Other physical Android TV / Google TV | Unverified | None claimed | Volunteer device testing needed |
 
@@ -106,7 +106,7 @@ python3 scripts/check-artifact.py build/prism-clock-unsigned.apk
 
 The explicit Android-free host coverage boundary currently passes every line and branch in mesh generation, options resolution/validation and clock/time layout. The installer has a separate 100% line/branch gate. Native graphics, provider persistence, lifecycle, remote navigation and displayed quality require separate platform tests. See [Building](docs/building.md) and the [Delivery checkpoint](docs/checkpoint.md).
 
-CI is authored but has not run remotely because this repository is not published yet. No passing CI or release badge is claimed.
+CI builds unsigned review APKs and enforces the explicit host coverage, installer coverage, style, artifact and documentation checks. No APK release badge is claimed before an actual release exists.
 
 ## Documentation
 
@@ -114,11 +114,17 @@ CI is authored but has not run remotely because this repository is not published
 - [Building and coverage boundaries](docs/building.md)
 - [Configuration and host interface](docs/configuration.md)
 - [Privacy and installer network boundary](docs/privacy.md)
+- [Native capture provenance and remaining gates](docs/verification.md)
 - [Delivery checkpoint and pending gates](docs/checkpoint.md)
 
 ## Screenshots
 
-Current screenshots will be captured and visually reviewed after the corrected surface passes native review. Earlier development frames are retained as local verification evidence and are not presented as the final scene.
+<table>
+<tr><td><img src="art/screenshots/prism-silver-dream-api34.png" alt="Prism Clock running as an actual Google TV DreamService with silver faceted metal and readable drifting time and date" width="270"></td><td><img src="art/screenshots/prism-champagne-api34.png" alt="Prism Clock native champagne metal finish with current time and date" width="270"></td><td><img src="art/screenshots/prism-iridescent-api34.png" alt="Prism Clock native iridescent coating with angle-dependent color" width="270"></td></tr>
+<tr><td><img src="art/screenshots/prism-settings-top-api34.png" alt="Prism Clock TV settings with Preview initially focused and metal, motion, facet and lighting controls" width="270"></td><td><img src="art/screenshots/prism-settings-bottom-api34.png" alt="Prism Clock TV settings scrolled to clock format, seconds, date and randomize-all controls" width="270"></td><td></td></tr>
+</table>
+
+Actual 1920x1080 Google TV API34 emulator captures. The silver scene is the bound DreamService; the other finishes are the native preview. See [Verification](docs/verification.md) for exact artifact provenance and pending checks. Settings captures include the verified initial-focus correction.
 
 ## Privacy
 

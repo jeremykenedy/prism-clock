@@ -33,5 +33,7 @@ jobs:
         run: bash build.sh --unsigned
       - name: Verify manifest and offline runtime boundary
         run: python3 scripts/check-artifact.py build/prism-clock-unsigned.apk
+      - name: Verify documentation and artwork links
+        run: python3 scripts/check-docs.py
       - name: Check whitespace
         run: git diff --check

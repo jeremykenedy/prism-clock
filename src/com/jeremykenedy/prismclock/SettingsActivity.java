@@ -33,6 +33,7 @@ public final class SettingsActivity extends Activity {
     content.addView(description);
     Button preview = new Button(this);
     preview.setText("Preview animation");
+    preview.setFocusableInTouchMode(true);
     preview.setOnClickListener(
         new android.view.View.OnClickListener() {
           @Override
@@ -94,5 +95,6 @@ public final class SettingsActivity extends Activity {
     ScrollView scroll = new ScrollView(this);
     scroll.addView(content);
     setContentView(scroll);
+    preview.requestFocus();
   }
 }
