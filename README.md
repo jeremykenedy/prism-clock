@@ -5,7 +5,7 @@
 
 <p align="center">A native clock over a continuously deforming metallic triangular surface.</p>
 
-<p align="center"><a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg" alt="Apache License 2.0"></a></p>
+<p align="center"><a href="https://github.com/jeremykenedy/prism-clock/actions/workflows/ci.yml"><img src="https://github.com/jeremykenedy/prism-clock/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build and coverage tests"></a> <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg" alt="Apache License 2.0"></a></p>
 
 <p align="center"><a href="https://github.com/jeremykenedy"><img src="https://img.shields.io/github/followers/jeremykenedy?label=Follow" alt="Follow Jeremy Kenedy"></a> <a href="https://github.com/jeremykenedy/prism-clock"><img src="https://img.shields.io/badge/GitHub-Star-blue" alt="Star Prism Clock"></a> <a href="https://github.com/sponsors/jeremykenedy"><img src="https://img.shields.io/badge/GitHub-Sponsor-pink" alt="Sponsor on GitHub"></a></p>
 
