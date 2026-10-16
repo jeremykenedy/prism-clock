@@ -26,12 +26,19 @@ All five secure keys remained unchanged: selected Dream components, enabled stat
 
 The first ten-second native development movie showed continuous surface deformation and clock travel. Current finish captures establish native rendering and readability, but a final current-build timed motion/pacing check remains pending. No displayed FPS is inferred from captured movie frames or display refresh rate.
 
+## Public documentation browser checks
+
+The public GitHub README was inspected in Chrome at 1280px and 320px viewport widths. Scoped DevTools media overrides selected all eight desktop/mobile, light/dark, animated/still banner variants. Each expected content-hashed `currentSrc` loaded completely. The 320px mobile banner rendered within a 254px content box without clipped titles or artwork. Animated views were sampled across their declared loop durations; facets changed and moved within their illustration bounds while text remained fixed. Reduced-motion views selected the separate stationary artwork. These checks concern documentation animation, not native scene pacing.
+
+All five real native gallery images loaded at their original 1920px source width in both viewport layouts. Desktop and mobile gallery layouts were visually inspected. Both scoped media overrides were restored to No emulation, device toolbar remained off, the viewport override was reset, and only the owned review tab and DevTools window were closed.
+
+Source is public on `main` and the descriptive feature branch. The initial main verification workflow and current source PR checks passed. Source publication is not an APK release or a completed device gate.
+
 ## Remaining release gates
 
 - Complete settings extremes and persistence, current timed playback and pause/resume.
-- Current README gallery and all eight banner variants in a real public browser.
 - Final APK privacy/runtime, signer and package/version inspection after preview resources settle.
-- Source publication and required CI, followed by the root quality gate.
+- Final required CI after the final production sweep, followed by the root quality gate.
 - Physical Fire TV automatic idle activation, vendor Back/Menu/Home behavior, sustained performance, power/thermal and actual buffer resolution.
 - Other physical Android TV / Google TV combinations. Volunteers with untested devices are needed to report model, OS/API, resolution, behavior and results through the repository's issue tracker.
 - Release and both host integrations, with final checksum verification and physical replacement delivery.
