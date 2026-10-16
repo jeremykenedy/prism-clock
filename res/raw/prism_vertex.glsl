@@ -19,7 +19,7 @@ vec3 surface(vec2 p) { return vec3(p,height(p)); }
 void main() {
     vec3 p0=surface(aCorner0),p1=surface(aCorner1),p2=surface(aCorner2);
     vNormal=normalize(cross(p1-p0,p2-p0));
-    vPosition=surface(aPosition);
+    vPosition=vec3(aPosition,p0.z*aBarycentric.x+p1.z*aBarycentric.y+p2.z*aBarycentric.z);
     vBarycentric=aBarycentric;
     gl_Position=uMatrix*vec4(vPosition,1.0);
 }

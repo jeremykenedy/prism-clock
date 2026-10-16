@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RadialGradient;
+import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.opengl.GLSurfaceView;
 import android.os.Handler;
@@ -84,6 +86,10 @@ public final class PrismSceneView extends FrameLayout {
   private final class ClockFace extends View {
     private final PrismOptions options;
     private final Paint text = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint backdrop = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private float backdropRadius;
+    private long formattedSecond = Long.MIN_VALUE;
+    private String timeText = "", dateText = "", periodText = "";
 
     ClockFace(Context context, PrismOptions options) {
       super(context);
@@ -91,7 +97,19 @@ public final class PrismSceneView extends FrameLayout {
       text.setTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
       text.setTextAlign(Paint.Align.CENTER);
       text.setColor(Color.rgb(248, 249, 253));
-      setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+    }
+
+    @Override
+    protected void onSizeChanged(int width, int height, int oldWidth, int oldHeight) {
+      backdropRadius = Math.max(1, height) * .25f * options.clockScale;
+      backdrop.setShader(
+          new RadialGradient(
+              0,
+              0,
+              backdropRadius,
+              new int[] {0xbb000000, 0xaa000000, 0x00000000},
+              new float[] {0, .6f, 1},
+              Shader.TileMode.CLAMP));
     }
 
     @Override
@@ -99,22 +117,30 @@ public final class PrismSceneView extends FrameLayout {
       float width = getWidth(), height = getHeight(), scale = height / 1080f;
       float x = width * (.5f + ClockLayout.driftX(renderer.seconds, options.travel));
       float y = height * (.5f + ClockLayout.driftY(renderer.seconds, options.travel));
+      canvas.save();
+      canvas.translate(x, y);
+      canvas.scale(1.65f, 1);
+      canvas.drawCircle(0, 0, backdropRadius, backdrop);
+      canvas.restore();
       text.setShadowLayer(18 * scale, 0, 3 * scale, 0xc9000000);
       text.setTextSize((options.seconds ? 142 : 184) * scale * options.clockScale);
       long now = System.currentTimeMillis();
       Locale locale = Locale.getDefault();
-      String time = ClockLayout.time(now, options.use24Hour, options.seconds, locale);
+      if (now / 1000 != formattedSecond) {
+        formattedSecond = now / 1000;
+        timeText = ClockLayout.time(now, options.use24Hour, options.seconds, locale);
+        dateText = ClockLayout.date(now, locale);
+        periodText = new java.text.SimpleDateFormat("a", locale).format(new java.util.Date(now));
+      }
       float baseline = y - (text.ascent() + text.descent()) * .5f;
-      canvas.drawText(time, x, baseline, text);
+      canvas.drawText(timeText, x, baseline, text);
       text.setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
       text.setTextSize(24 * scale * options.clockScale);
       if (!options.use24Hour) {
-        String period = new java.text.SimpleDateFormat("a", locale).format(new java.util.Date(now));
-        canvas.drawText(period, x, y + height * .108f, text);
+        canvas.drawText(periodText, x, y + height * .108f, text);
       }
       if (options.date)
-        canvas.drawText(
-            ClockLayout.date(now, locale), x, y + height * (options.use24Hour ? .12f : .16f), text);
+        canvas.drawText(dateText, x, y + height * (options.use24Hour ? .12f : .16f), text);
       text.setTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
     }
   }

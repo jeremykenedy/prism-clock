@@ -17,8 +17,11 @@ void main() {
     float strip=studio(reflected,vec3(.8,.32,1.0),85.0);
     float top=studio(reflected,vec3(-.2,-.8,1.0),38.0);
     float rim=pow(1.0-max(dot(n,view),0.0),4.0);
-    vec3 coating=.5+.5*cos(vec3(0.0,2.1,4.2)+6.0*dot(n,view));
-    vec3 metal=mix(uMetal,uMetal*.45+coating*.55,uFinish);
+    vec3 metal=uMetal;
+    if(uFinish>.5) {
+        vec3 coating=.5+.5*cos(vec3(0.0,2.1,4.2)+6.0*dot(n,view));
+        metal=uMetal*.45+coating*.55;
+    }
     vec3 color=metal*(.035+1.3*broad)+vec3(.86,.92,1.0)*strip*3.0
         +vec3(1.0,.85,.68)*top+rim*.3;
     float edge=min(vBarycentric.x,min(vBarycentric.y,vBarycentric.z));
