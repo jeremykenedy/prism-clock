@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-22",
+  "platform": "Android API34 emulator",
+  "artifactSha256": "edbf475c4a2b253ccc069adaee8cac2cbba4d16b5579d5299e2e2d1bdaa21fd5",
+  "capture": "Unretouched ADB screenshots",
+  "installedBefore": true,
+  "preUpgradeProviderValuesAvailable": true,
+  "postUpgradePreferenceCount": 11,
+  "postUpgradeValuesPreserved": true,
+  "systemSettingsCountPreserved": 8,
+  "remoteCreditsScrollToLicenseEndAndPositiveClose": true,
+  "previewBack": true,
+  "boundDreamBack": true,
+  "finalState": "Home",
+  "images": [
+    {
+      "file": "art/screenshots/credits-api34-credits.png",
+      "sha256": "1da0fad08ba2a0aa3e6b2d3dfbea2275c0e8e672ac3cc06cbec6e64fbb38ec15",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "art/screenshots/credits-api34-license-end.png",
+      "sha256": "4951c6a3f5ca31200ef3368bfce466f5ed465f679768c5d8360d83d66f09aafd",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "art/screenshots/credits-api34-settings.png",
+      "sha256": "b6bfb9aa7c0f46ae238fe5961e6cf54fa8e7cc076dba65b3a6fc32bd968ef35f",
+      "width": 1920,
+      "height": 1080
+    }
+  ],
+  "physicalQualityAndPacing": "Pending"
+}

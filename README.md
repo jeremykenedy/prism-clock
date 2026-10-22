@@ -5,13 +5,13 @@
 
 <p align="center">A native clock over a continuously deforming metallic triangular surface.</p>
 
-<p align="center"><a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg" alt="Apache License 2.0"></a></p>
+<p align="center"><a href="https://github.com/jeremykenedy/prism-clock/releases"><img src="https://img.shields.io/github/downloads/jeremykenedy/prism-clock/total" alt="Release downloads"></a> <a href="https://github.com/jeremykenedy/prism-clock/releases/latest"><img src="https://img.shields.io/github/v/release/jeremykenedy/prism-clock" alt="Latest stable release"></a> <a href="https://github.com/jeremykenedy/prism-clock/actions/workflows/ci.yml"><img src="https://github.com/jeremykenedy/prism-clock/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build and coverage tests"></a> <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg" alt="Apache License 2.0"></a></p>
 
 <p align="center"><a href="https://github.com/jeremykenedy"><img src="https://img.shields.io/github/followers/jeremykenedy?label=Follow" alt="Follow Jeremy Kenedy"></a> <a href="https://github.com/jeremykenedy/prism-clock"><img src="https://img.shields.io/badge/GitHub-Star-blue" alt="Star Prism Clock"></a> <a href="https://github.com/sponsors/jeremykenedy"><img src="https://img.shields.io/badge/GitHub-Sponsor-pink" alt="Sponsor on GitHub"></a></p>
 
 Show some love by [starring this repository on GitHub](https://github.com/jeremykenedy/prism-clock).
 
-Prism Clock is currently an unreleased development candidate. The current scene has passed its initial native rendering and Dream checks; full settings, playback, physical-device and release gates remain pending. There is no release to download and it has not been registered in Fire TV Toolkit or Fire TV UI yet.
+Prism Clock shows actual local time over a continuously moving metallic surface. The final 1.0.0 build passed native emulator and physical Fire TV preview, settings and selected-Dream checks. See [verification](docs/verification.md) for measured performance and limits.
 
 ## Table of Contents
 
@@ -19,7 +19,6 @@ Prism Clock is currently an unreleased development candidate. The current scene 
 - [Installation](#installation)
 - [Features](#features)
 - [Configuration](#configuration)
-- [Fire TV Toolkit](#fire-tv-toolkit)
 - [Device Verification](#device-verification)
 - [Testing](#testing)
 - [Documentation](#documentation)
@@ -35,12 +34,13 @@ Source builds need Java, Python 3.10 or newer, Android SDK platform 36 and build
 
 ## Installation
 
-No public release is available yet. For a locally verified build:
+Download the signed APK from [the latest release](https://github.com/jeremykenedy/prism-clock/releases/latest), or use the guided installer:
 
 ```sh
-bash build.sh
-python3 install.py --serial YOUR_ADB_SERIAL --apk build/prism-clock.apk
+python3 install.py --serial YOUR_ADB_SERIAL
 ```
+
+It downloads the latest stable APK and verifies its checksum. For a local build, add `--apk build/prism-clock.apk`.
 
 The installer asks before changing the selected device. Updates use Android's same-package, same-signer replacement and preserve app settings. It does not change the TV's selected screensaver or system timers. Choose Prism Clock through the TV's supported screensaver picker after installation. Availability of that picker depends on the TV platform.
 
@@ -56,14 +56,12 @@ If Prism Clock is the selected screensaver, select another screensaver through t
 
 ## Features
 
-- A conforming triangular metal surface with continuous three-dimensional deformation and changing studio reflections.
-- Silver, graphite, champagne and angle-dependent iridescent finishes.
-- Actual local time with 12/24-hour format, optional seconds and date.
-- Continuous slow clock travel with two ranges and three typography sizes.
-- Adjustable facet scale, surface depth, motion and lighting.
-- Per-setting Random choices and optional randomize-all on scene start.
-- Native settings and a local host settings-schema provider.
-- No tracking or analytics; no network permission or content requests.
+| Feature | What it does | Guide |
+| --- | --- | --- |
+| Moving metal | Deforming triangular surface with four studio-lit finishes | [Scene options](docs/configuration.md) |
+| Local clock | Actual 12/24-hour time, optional seconds/date and continuous travel | [Clock controls](docs/configuration.md) |
+| Remote controls | Native settings, preview and offline credits | [Device verification](docs/verification.md) |
+| Host integration | App-owned settings schema with validated values | [Provider contract](docs/configuration.md) |
 
 ## Configuration
 
@@ -71,25 +69,13 @@ Scene changes apply on the next preview or Dream start. Useful controls are desc
 
 The app-owned host interface is `content://com.jeremykenedy.prismclock.settings/schema` and `/settings`. Unsupported keys and values are rejected. This is a local scene-settings interface, not an arbitrary command or file-access bridge.
 
-## Fire TV Toolkit
-
-[Fire TV Toolkit](https://github.com/jeremykenedy/fire-tv-toolkit) provides guided screensaver installation, selection, updates and removal, launcher choices, and supported sleep/screensaver timer management. Its setup is:
-
-```sh
-git clone https://github.com/jeremykenedy/fire-tv-toolkit.git
-cd fire-tv-toolkit
-node setup.js
-```
-
-Prism Clock is not registered yet. Exact `prism-clock` install/select/update/remove commands and the verified release metadata will be added when the app passes its native quality gates and both ecosystem integrations are tested. A manifest entry alone will not be described as completed delivery.
-
 ## Device Verification
 
 | Environment | Resolution | Verified behavior | Status |
 | --- | --- | --- | --- |
-| Google TV API 34 emulator, host GPU | Actual 1920x1080 capture | Current silver/champagne/iridescent rendering, actual bound Dream, remote preview/Back/Home, settings provider and unchanged secure Dream/timer state | Partial; final settings/playback and physical gates pending |
-| Physical Fire TV | Unverified | None claimed | Device gate pending |
-| Other physical Android TV / Google TV | Unverified | None claimed | Volunteer device testing needed |
+| Google TV API 34 emulator | 1920x1080 | Scene finishes, settings validation/persistence, full offline license/Close, Preview/Back/Home and bound Dream | Native routes passed |
+| Fire TV AFTDEC012E/API 30 | 1920x1080 | Maximum silver preset, minimum graphite selected non-test Dream and remote exits | 24.67 actual presents/s after warmup; limited headroom |
+| Other physical Android TV / Google TV | Unverified | None claimed | Device testing needed |
 
 If you have an untested device, please report the model, OS/API, resolution, tested behavior and results through the repository's issue tracker. Emulator preview behavior does not prove automatic idle activation, vendor navigation, native 4K composition or sustained hardware performance.
 
@@ -106,7 +92,7 @@ python3 scripts/check-artifact.py build/prism-clock-unsigned.apk
 
 The explicit Android-free host coverage boundary currently passes every line and branch in mesh generation, options resolution/validation and clock/time layout. The installer has a separate 100% line/branch gate. Native graphics, provider persistence, lifecycle, remote navigation and displayed quality require separate platform tests. See [Building](docs/building.md) and the [Delivery checkpoint](docs/checkpoint.md).
 
-CI builds unsigned review APKs and enforces the explicit host coverage, installer coverage, style, artifact and documentation checks. No APK release badge is claimed before an actual release exists.
+CI builds unsigned review APKs and enforces the explicit host coverage, installer coverage, style, artifact and documentation checks. Production signing keys stay outside CI.
 
 ## Documentation
 
@@ -116,19 +102,21 @@ CI builds unsigned review APKs and enforces the explicit host coverage, installe
 - [Privacy and installer network boundary](docs/privacy.md)
 - [Native capture provenance and remaining gates](docs/verification.md)
 - [Delivery checkpoint and pending gates](docs/checkpoint.md)
+- [Native screenshot gallery](docs/screenshots.md)
+- [Ecosystem integrations](docs/integrations.md)
+- [Version 1.0.0 release guide](docs/releases/v1.0.0.md)
 
 ## Screenshots
 
 <table>
-<tr><td><img src="art/screenshots/prism-silver-dream-api34.png" alt="Prism Clock running as an actual Google TV DreamService with silver faceted metal and readable drifting time and date" width="270"></td><td><img src="art/screenshots/prism-champagne-api34.png" alt="Prism Clock native champagne metal finish with current time and date" width="270"></td><td><img src="art/screenshots/prism-iridescent-api34.png" alt="Prism Clock native iridescent coating with angle-dependent color" width="270"></td></tr>
-<tr><td><img src="art/screenshots/prism-settings-top-api34.png" alt="Prism Clock TV settings with Preview initially focused and metal, motion, facet and lighting controls" width="270"></td><td><img src="art/screenshots/prism-settings-bottom-api34.png" alt="Prism Clock TV settings scrolled to clock format, seconds, date and randomize-all controls" width="270"></td><td></td></tr>
+<tr><td><img src="art/screenshots/physical-silver-preview.png" alt="Physical Fire TV silver surface with a large drifting clock" width="320"></td><td><img src="art/screenshots/physical-graphite-dream.png" alt="Physical selected graphite Dream with a smaller 12-hour clock" width="320"></td><td><img src="art/screenshots/credits-api34-credits.png" alt="Current offline credits on the API 34 emulator" width="320"></td></tr>
 </table>
 
-Actual 1920x1080 Google TV API34 emulator captures. The silver scene is the bound DreamService; the other finishes are the native preview. See [Verification](docs/verification.md) for exact artifact provenance and pending checks. Settings captures include the verified initial-focus correction.
+The first two 1920x1080 captures show the exact 1.0.0 physical build; credits use the same APK on an API 34 emulator. See the [full current gallery](docs/screenshots.md) for settings, the complete license and artifact provenance.
 
 ## Privacy
 
-The APK has no network permission, runtime dependencies, ads, analytics, tracking, telemetry or reporting. Scene preferences remain local. The standalone installer separately downloads explicitly requested GitHub releases and verifies checksums; it is not part of the app runtime. Final runtime observation remains part of the release gate. See [Privacy](docs/privacy.md).
+The APK has no network permission, runtime dependencies, ads, analytics, tracking, telemetry or reporting. Scene preferences remain local. The standalone installer separately downloads explicitly requested GitHub releases and verifies checksums; it is not part of the app runtime. The final signed artifact requests no network permission. See [Privacy](docs/privacy.md).
 
 ## License
 

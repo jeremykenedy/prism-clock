@@ -20,4 +20,4 @@ The local time zone and locale come from Android. Prism Clock does not fetch tim
 
 The host integration interface is `content://com.jeremykenedy.prismclock.settings/schema` for the version-one schema and `/settings` for current values. The schema returns `key`, `title`, `type`, `default`, `choices`, and `randomAllowed`. Updates use the `/settings` URI with string `key` and `value` fields. Unknown keys, unsupported values and updates to the schema are rejected. No host receives arbitrary file or command access through this provider.
 
-The Settings activity is `com.jeremykenedy.prismclock/.SettingsActivity`; the Dream component is `com.jeremykenedy.prismclock/.PrismDreamService`. The provider and native remote behavior still require the pending device verification recorded in the checkpoint.
+The Settings activity is `com.jeremykenedy.prismclock/.SettingsActivity`; the Dream component is `com.jeremykenedy.prismclock/.PrismDreamService`. The provider, native remote routes and selected Dream behavior were checked as recorded in [verification](verification.md).
