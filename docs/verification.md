@@ -8,7 +8,7 @@ The unsigned artifact inspection checks package/version, required DreamService, 
 
 ## Current native evidence
 
-Google TV API34 emulator `emulator-5580`, host GPU, actual 1920x1080 captures, 2026-10-16. The scene capture APK SHA-256 is `88004170f5969ac69baa8b35454cd4495b7ba1901cc5efaa532592ebed9320f9`. Later initial-focus and preview-resource changes do not change its scene geometry, shaders or typography.
+Google TV API 34 emulator `emulator-5580`, host GPU, actual 1920x1080 captures, 2026-10-16. The scene capture APK SHA-256 is `88004170f5969ac69baa8b35454cd4495b7ba1901cc5efaa532592ebed9320f9`. Later initial-focus and preview-resource changes do not change its scene geometry, shaders or typography.
 
 | Capture | Provenance and settings |
 | --- | --- |
@@ -18,7 +18,7 @@ Google TV API34 emulator `emulator-5580`, host GPU, actual 1920x1080 captures, 2
 
 The first preview settled for at least forty seconds. Subsequent finish restarts and the actual Dream capture were inspected after their new surfaces rendered. Every stored screenshot was opened and viewed. The embedded 640x360 JPEG and 320x180 launcher banner are resized derivatives of the actual silver Dream capture; no scene content was retouched.
 
-The Android14 AOSP `IDreamManager.aidl` source was inspected to confirm the exact-image hidden Binder `testDream` mapping, matching a previously verified gate on this same API34 emulator. A nonpersistent test Dream was started, the current Dream component verified in `dumpsys dreams`, and its actual pixels captured. Back was separately checked before force-stop and returned `mCurrentDream=null`. This mapping is not a public installer contract and is not assumed valid on other Android or Fire OS versions.
+The Android14 AOSP `IDreamManager.aidl` source was inspected to confirm the exact-image hidden Binder `testDream` mapping, matching a previously verified gate on this same API 34 emulator. A nonpersistent test Dream was started, the current Dream component verified in `dumpsys dreams`, and its actual pixels captured. Back was separately checked before force-stop and returned `mCurrentDream=null`. This mapping is not a public installer contract and is not assumed valid on other Android or Fire OS versions.
 
 Native settings schema and value queries returned eleven rows. A valid finish change persisted and was read back; an invalid value was rejected. Exact defaults were restored. Remote Down/Select opened Preview from Settings, Back returned Settings, and Home left. The initial Preview-focus correction passed on the next native build, SHA-256 `e7921f68edbde6b151220051fff00e8ac76815fed3065094483508fc94d920a9`: accessibility state confirms the Preview button is initially focused, Select opens Preview directly, Back returns Settings and D-pad reaches the bottom Randomize control. Current top/bottom settings captures were opened and viewed and are stored in `art/screenshots/prism-settings-top-api34.png` and `prism-settings-bottom-api34.png`. All eleven app values remained identical to the baseline.
 
@@ -47,4 +47,20 @@ No release, automatic-idle, physical TV, native 4K or sustained performance supp
 
 ## Offline credits follow-up
 
-The current credits-only artifact is `edbf475c4a2b253ccc069adaee8cac2cbba4d16b5579d5299e2e2d1bdaa21fd5`. It adds a final remote-accessible Settings button and bundles the original NOTICE and complete Apache license, preserving the Cloud Drift Clock source notice. All eight original non-signature, non-DEX entries and 14 compiled classes outside SettingsActivity match the prior e792 renderer baseline. The whole APK and DEX differ. Source formatting, host line/branch coverage, installer coverage, signed build and permission/manifest inspection pass. The exact final credits/scroll/Preview/Dream/Back routes, updated Settings capture and physical moving/pacing acceptance remain pending. No release is approved by these host checks.
+The current credits-only artifact is `edbf475c4a2b253ccc069adaee8cac2cbba4d16b5579d5299e2e2d1bdaa21fd5`. It adds a final remote-accessible Settings button and bundles the original NOTICE and complete Apache license, preserving the Cloud Drift Clock source notice. All eight original non-signature, non-DEX entries and 14 compiled classes outside SettingsActivity match the prior e792 renderer baseline. The whole APK and DEX differ. Source formatting, host line/branch coverage, installer coverage, signed build and permission/manifest inspection pass. The exact native credits and navigation follow-up is recorded below; physical moving/pacing acceptance remains pending. No release is approved by these host checks.
+
+## October 22 exact credits candidate
+
+Android API 34 emulator checks used the frozen APK hash above with actual 1920x1080 captures. D-pad navigation reached Credits and licenses, scrolled through the full NOTICE and license to its end, and selected the positive Close button. Preview returned to Settings with Back; the actual DreamService bound and exited with Back. All eight saved system keys and the original screensaver selection were unchanged, and the emulator returned Home. No app data was cleared or uninstalled.
+
+Prism was already installed; its 11 exposed preferences were unchanged by the signed in-place update and restored after testing. These are native credits/lifecycle checks, not physical smoothness, automatic idle, 4K or thermal verification.
+
+[Sanitized capture provenance](../art/screenshots/credits-api34.json) records the artifact and screenshot hashes.
+
+<table>
+  <tr>
+    <td><a href="../art/screenshots/credits-api34-credits.png"><img src="../art/screenshots/credits-api34-credits.png" alt="Full offline credits and notices" width="320"></a></td>
+    <td><a href="../art/screenshots/credits-api34-license-end.png"><img src="../art/screenshots/credits-api34-license-end.png" alt="End of the bundled Apache license" width="320"></a></td>
+    <td><a href="../art/screenshots/credits-api34-settings.png"><img src="../art/screenshots/credits-api34-settings.png" alt="Current native settings" width="320"></a></td>
+  </tr>
+</table>
