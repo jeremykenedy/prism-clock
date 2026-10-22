@@ -44,3 +44,7 @@ Source is public on `main` and the descriptive feature branch. The initial main 
 - Release and both host integrations, with final checksum verification and physical replacement delivery.
 
 No release, automatic-idle, physical TV, native 4K or sustained performance support is claimed yet.
+
+## Offline credits follow-up
+
+The current credits-only artifact is `edbf475c4a2b253ccc069adaee8cac2cbba4d16b5579d5299e2e2d1bdaa21fd5`. It adds a final remote-accessible Settings button and bundles the original NOTICE and complete Apache license, preserving the Cloud Drift Clock source notice. All original non-DEX entries and compiled classes outside SettingsActivity match the prior e792 renderer baseline. The whole APK and DEX differ. Source formatting, host line/branch coverage, installer coverage, signed build and permission/manifest inspection pass. The exact final credits/scroll/Preview/Dream/Back routes, updated Settings capture and physical moving/pacing acceptance remain pending. No release is approved by these host checks.
