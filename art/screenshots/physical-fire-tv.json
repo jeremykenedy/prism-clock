@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-10-22",
+  "platform": "Fire TV AFTDEC012E / Android API30",
+  "apkSha256": "edbf475c4a2b253ccc069adaee8cac2cbba4d16b5579d5299e2e2d1bdaa21fd5",
+  "version": "1.0.0",
+  "versionCode": 1,
+  "actualPresentsPerSecond": 24.67087366062138,
+  "maxPreset": "silver/flowing/small/dramatic/bright/large/wide/24h/seconds+date",
+  "minimumPreset": "graphite/slow/large/subtle/dim/subtle/gentle/12h/no seconds/no date",
+  "measurement": "Production SurfaceView sample after40seconds; not recorded video FPS or thermal endurance",
+  "preUpgradePreferences": "Original physical pre-update provider rows unavailable;11post-update values captured and restored. API34 in-place11-value retention verified separately.",
+  "captures": [
+    {
+      "file": "physical-silver-preview.png",
+      "sha256": "7217ea6e4efd79d177cbbaef77ec95c1faaebf7be80811ad8554b7172b5c41cb",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "physical-graphite-dream.png",
+      "sha256": "8707c751d7bbdceb893f1df70125405fe76633ad65d387bcb6bed642df4e5fce",
+      "width": 1920,
+      "height": 1080
+    }
+  ]
+}
