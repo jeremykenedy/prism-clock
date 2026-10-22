@@ -92,6 +92,16 @@ public final class SettingsActivity extends Activity {
           }
         });
     content.addView(random);
+    Button credits = new Button(this);
+    credits.setText("Credits and licenses");
+    credits.setOnClickListener(
+        new android.view.View.OnClickListener() {
+          @Override
+          public void onClick(android.view.View view) {
+            CreditsDialog.show(SettingsActivity.this);
+          }
+        });
+    content.addView(credits);
     ScrollView scroll = new ScrollView(this);
     scroll.addView(content);
     setContentView(scroll);
