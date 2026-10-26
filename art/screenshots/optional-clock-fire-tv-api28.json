@@ -1,0 +1,39 @@
+{
+  "version": "1.1.0",
+  "versionCode": 4,
+  "artifactSha256": "6d1a3204ca648033c3c0c1d68adcceb29e90ed1ff61ec24b7f65e1326b7621e8",
+  "device": "Physical Fire TV AFTALMO/API28",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "capture": "Actual native screenshots, unretouched",
+  "settings": {
+    "palette": "silver",
+    "speed": "gentle",
+    "facets": "medium",
+    "depth": "sculpted",
+    "brightness": "balanced",
+    "randomize_all": "false"
+  },
+  "screenshots": {
+    "clock-hidden-fire-tv-api28.png": "f0db6f7087b25e3fddef9bae7acae51ebcef2dc2320cda49ca996789889c73b9",
+    "clock-visible-fire-tv-api28.png": "fa716030ec0baeed32a627998977284aeff1743e5296a7320d4e7a90a5a4b303",
+    "clock-toggle-fire-tv-api28.png": "eb4d88f6b7fe202fca8962a78392a53e75e4cb57e65c91d64df22f7694b4e97b"
+  },
+  "nativeDpadOnOff": true,
+  "strictRestorationPassed": true,
+  "cleanPresentationWindows": {
+    "clockOff": [
+      18.204,
+      18.204,
+      18.204
+    ],
+    "clockOn": [
+      17.162,
+      17.162,
+      17.123
+    ]
+  },
+  "limits": "Rolling SurfaceView presentation windows, not recording frame rate, universal performance or thermal proof. Renderer and shaders are unchanged from1.0."
+}

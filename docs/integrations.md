@@ -4,7 +4,7 @@
 
 The package is `com.jeremykenedy.prismclock`, the Dream component is `com.jeremykenedy.prismclock/.PrismDreamService`, and the app-owned provider is documented in [configuration](configuration.md). A local installer does not change the selected Dream or timers. There is no runtime dependency on either host.
 
-The unreleased 1.1.0 candidate adds `show_clock` to the same provider, bringing
+Version 1.1.0 adds `show_clock` to the same provider, bringing
 its schema to twelve settings. It is a boolean, defaults to `true`, accepts only
 `false` or `true`, and has `randomAllowed=false`. Hosts should preserve the eleven
 existing values and render this row as a switch. A public APK pin must not change

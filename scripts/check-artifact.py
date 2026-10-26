@@ -17,7 +17,7 @@ def dump(*arguments):
 
 badging = dump("badging")
 if not re.search(
-    r"package: name='com\.jeremykenedy\.prismclock' versionCode='2' versionName='1\.1\.0'", badging
+    r"package: name='com\.jeremykenedy\.prismclock' versionCode='4' versionName='1\.1\.0'", badging
 ):
     raise SystemExit("Unexpected package or version")
 permissions = dump("permissions")

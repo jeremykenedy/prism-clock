@@ -11,12 +11,13 @@
 
 Show some love by [starring this repository on GitHub](https://github.com/jeremykenedy/prism-clock).
 
-Prism Clock shows a continuously moving metallic surface with an optional local clock. The clock stays visible by default. Version 1.1 is in development; its new switch has emulator evidence and awaits final physical verification. The final 1.0.0 build passed native emulator and physical Fire TV preview, settings and selected-Dream checks. See [verification](docs/verification.md) for measured performance and limits.
+Prism Clock shows a continuously moving metallic surface with an optional local clock. Version 1.1 adds a switch to hide the time, date and clock backing together. The clock stays visible by default, and the original surface design is preserved. Native controls and a natural idle Dream were checked on Fire TV; measured speed varies by hardware. See [verification](docs/verification.md) for evidence and limits.
 
 ## Table of Contents
 
 - [Requirements](#requirements)
 - [Installation](#installation)
+- [Fire TV Toolkit](#fire-tv-toolkit)
 - [Features](#features)
 - [Configuration](#configuration)
 - [Device Verification](#device-verification)
@@ -54,6 +55,20 @@ python3 install.py --serial YOUR_ADB_SERIAL --uninstall
 
 If Prism Clock is the selected screensaver, select another screensaver through the supported TV picker before removal. The installer has no prior Dream state to restore because it does not change selection or timers.
 
+## Fire TV Toolkit
+
+[Fire TV Toolkit](https://github.com/jeremykenedy/fire-tv-toolkit) offers guided TV setup, launcher choices, verified app updates, screensaver selection and sleep timers.
+
+```sh
+git clone https://github.com/jeremykenedy/fire-tv-toolkit.git
+cd fire-tv-toolkit
+node setup.js
+firetv-screensavers --install=prism-clock --yes
+firetv-set-screensaver --set=prism-clock --yes
+```
+
+Repeat the install command to update. Select another screensaver before removal, then use `firetv-screensavers --uninstall=prism-clock --yes --force`. Fire TV UI can open the installed app's native settings. Publication of a new saver version and its verified host catalog update are separate steps; see [integrations](docs/integrations.md).
+
 ## Features
 
 | Feature | What it does | Guide |
@@ -73,7 +88,8 @@ The app-owned host interface is `content://com.jeremykenedy.prismclock.settings/
 
 | Version | Environment | Resolution | Verified behavior | Status |
 | --- | --- | --- | --- | --- |
-| 1.1 development | Google TV API 34 emulator | 1920x1080 | Show clock ON/OFF, randomization independence, process-death persistence and same-instance Preview resume/Back | Native controls passed; physical gate pending |
+| 1.1 | Google TV API 34 emulator | 1920x1080 | Show clock ON/OFF, randomization independence, process-death persistence and same-instance Preview resume/Back | Native controls passed |
+| 1.1 | Fire TV AFTALMO/API 28 | 1920x1080 | Actual D-pad ON/OFF, Preview/Back and natural five-minute non-test Dream with overlay hidden | Functional checks passed; default scene measured about 17 to 18 presents/s |
 | 1.0 public | Google TV API 34 emulator | 1920x1080 | Scene finishes, settings validation/persistence, full offline license/Close, Preview/Back/Home and bound Dream | Native routes passed |
 | 1.0 public | Fire TV AFTDEC012E/API 30 | 1920x1080 | Maximum silver preset, minimum graphite selected non-test Dream and remote exits | 24.67 actual presents/s after warmup; limited headroom |
 | Unverified | Other physical Android TV / Google TV | Unverified | None claimed | Device testing needed |
@@ -106,14 +122,13 @@ CI builds unsigned review APKs and enforces the explicit host coverage, installe
 - [Native screenshot gallery](docs/screenshots.md)
 - [Ecosystem integrations](docs/integrations.md)
 - [Version 1.0.0 release guide](docs/releases/v1.0.0.md)
+- [Version 1.1.0 release guide](docs/releases/v1.1.0.md)
 
 ## Screenshots
 
-<table><tr><td><img src="art/screenshots/optional-clock-off-api34.png" alt="Native moving prism surface with clock fully hidden"></td><td><img src="art/screenshots/optional-clock-on-api34.png" alt="Native prism surface with local time and date visible"></td><td><img src="art/screenshots/optional-clock-settings-api34.png" alt="Native Show clock switch enabled by default"></td></tr></table>
+<table><tr><td><img src="art/screenshots/clock-hidden-fire-tv-api28.png" alt="Physical Fire TV prism surface with the entire clock overlay hidden"></td><td><img src="art/screenshots/clock-visible-fire-tv-api28.png" alt="Physical Fire TV prism surface with local time and date visible"></td><td><img src="art/screenshots/clock-toggle-fire-tv-api28.png" alt="Actual native Show clock switch turned off with the remote"></td></tr></table>
 
-These 1920x1080 API 34 captures show the exact unreleased 1.1.0/code 2 candidate.
-See the [full gallery](docs/screenshots.md) for current randomization cases and
-separately labeled historical 1.0 physical evidence.
+These unretouched 1920x1080 physical API 28 captures show the exact 1.1.0/code 4 native artifact. See the [full gallery](docs/screenshots.md) for emulator randomization cases and separately labeled historical 1.0 evidence.
 
 ## Privacy
 
