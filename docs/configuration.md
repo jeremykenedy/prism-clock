@@ -1,9 +1,10 @@
 # Configuration
 
-Open Prism Clock from the TV launcher, use the remote to select a control, and choose a value. Changes apply on the next preview or Dream start. Each choice also supports Random, resolved once when the scene starts. Randomize all resolves every setting once per start; it does not flicker between configurations during playback.
+Open Prism Clock from the TV launcher, use the remote to select a control, and choose a value. Changes apply on the next preview or Dream start. Each choice also supports Random, resolved once when the scene starts. Randomize all resolves the existing choice settings once per start; it does not flicker between configurations during playback. Show clock is a separate persistent switch and is never randomized.
 
 | Key | Choices | Default | Effect |
 | --- | --- | --- | --- |
+| `show_clock` | false, true | true | Show time, period marker, date and clock backing. Off leaves only the moving prism surface. |
 | `palette` | silver, graphite, champagne, iridescent | silver | Metal reflectance; iridescent adds view-angle-dependent coating color. |
 | `speed` | slow, gentle, flowing | gentle | Continuous surface deformation speed. |
 | `facets` | large, medium, small | medium | Triangular mesh scale, using 24, 36 or 52 columns. |
@@ -14,10 +15,12 @@ Open Prism Clock from the TV launcher, use the remote to select a control, and c
 | `clock_format` | 12h, 24h | 24h | Actual local time format; 12-hour mode includes the locale's period marker. |
 | `show_seconds` | false, true | false | Seconds in the clock. |
 | `show_date` | false, true | true | Actual local weekday and date. |
-| `randomize_all` | false, true | false | Choose each setting randomly on scene start. |
+| `randomize_all` | false, true | false | Choose each choice setting randomly on scene start; leave Show clock unchanged. |
+
+Clock size, travel, format, seconds and date choices remain stored while Show clock is off. They take effect again when it is on. Existing installs retain the visible clock by default.
 
 The local time zone and locale come from Android. Prism Clock does not fetch time, location or weather.
 
-The host integration interface is `content://com.jeremykenedy.prismclock.settings/schema` for the version-one schema and `/settings` for current values. The schema returns `key`, `title`, `type`, `default`, `choices`, and `randomAllowed`. Updates use the `/settings` URI with string `key` and `value` fields. Unknown keys, unsupported values and updates to the schema are rejected. No host receives arbitrary file or command access through this provider.
+The host integration interface is `content://com.jeremykenedy.prismclock.settings/schema` for the version-one schema and `/settings` for current values. The schema returns twelve rows with `key`, `title`, `type`, `default`, `choices`, and `randomAllowed`. The `show_clock` row is a boolean with default `true`, choices `false|true`, and `randomAllowed=false`; the string `random` is rejected. Clock visibility writes are persisted before a successful provider response. Updates use the `/settings` URI with string `key` and `value` fields. Unknown keys, unsupported values and updates to the schema are rejected. No host receives arbitrary file or command access through this provider.
 
 The Settings activity is `com.jeremykenedy.prismclock/.SettingsActivity`; the Dream component is `com.jeremykenedy.prismclock/.PrismDreamService`. The provider, native remote routes and selected Dream behavior were checked as recorded in [verification](verification.md).

@@ -42,6 +42,17 @@ public final class SettingsActivity extends Activity {
           }
         });
     content.addView(preview);
+    CheckBox clock = new CheckBox(this);
+    clock.setText("Show clock");
+    clock.setChecked(prefs.getBoolean("show_clock", true));
+    clock.setOnCheckedChangeListener(
+        new android.widget.CompoundButton.OnCheckedChangeListener() {
+          @Override
+          public void onCheckedChanged(android.widget.CompoundButton button, boolean checked) {
+            prefs.edit().putBoolean("show_clock", checked).commit();
+          }
+        });
+    content.addView(clock);
     for (String[] spec : PrismOptions.SCHEMA) {
       TextView label = new TextView(this);
       label.setText(spec[1]);

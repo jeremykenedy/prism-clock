@@ -50,7 +50,8 @@ public final class PrismOptions {
   }
 
   public static boolean supported(String key, String value) {
-    if ("randomize_all".equals(key)) return "true".equals(value) || "false".equals(value);
+    if ("randomize_all".equals(key) || "show_clock".equals(key))
+      return "true".equals(value) || "false".equals(value);
     int row = row(key);
     if (row < 0 || value == null) return false;
     if ("random".equals(value)) return true;

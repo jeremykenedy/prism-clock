@@ -116,6 +116,13 @@ public final class PrismTest {
             && PrismOptions.supported("randomize_all", "false")
             && !PrismOptions.supported("randomize_all", "random"),
         "random switch validation");
+    check(
+        PrismOptions.supported("show_clock", "true")
+            && PrismOptions.supported("show_clock", "false")
+            && !PrismOptions.supported("show_clock", "random")
+            && !PrismOptions.supported("show_clock", "1")
+            && !PrismOptions.supported("show_clock", null),
+        "clock visibility accepts only explicit booleans, independently of scene randomization");
     for (int seed = 0; seed < 100; seed++) new PrismOptions(defaults(), new Random(seed), true);
     TimeZone previous = TimeZone.getDefault();
     TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
