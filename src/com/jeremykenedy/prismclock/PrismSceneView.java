@@ -34,7 +34,7 @@ public final class PrismSceneView extends FrameLayout {
           renderer.seconds += ClockLayout.step(now - previous);
           previous = now;
           surface.requestRender();
-          clock.invalidate();
+          if (clock != null) clock.invalidate();
           handler.postDelayed(this, 33);
         }
       };
@@ -54,8 +54,9 @@ public final class PrismSceneView extends FrameLayout {
     surface.setRenderer(renderer);
     surface.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
     addView(surface, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-    clock = new ClockFace(context, options);
-    addView(clock, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+    clock = prefs.getBoolean("show_clock", true) ? new ClockFace(context, options) : null;
+    if (clock != null)
+      addView(clock, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
   }
 
   public void start() {

@@ -1,6 +1,6 @@
 # Architecture
 
-`PrismMesh` creates a conforming equilateral triangle grid. Adjacent faces share the same base coordinates. Each vertex carries all three corners of its face and a barycentric coordinate. The buffer is uploaded once to a GLES2 vertex buffer.
+`PrismMesh` creates a conforming equilateral triangle grid. Adjacent faces share the same base coordinates. Each vertex carries all three corners of its face and a barycentric coordinate. The buffer is uploaded once to a GLES 2 vertex buffer.
 
 The vertex shader displaces the three corners with a continuous wave field, computes their flat face normal and projects the vertex. Adjacent triangles remain joined because the displacement is a function of the shared coordinate and elapsed scene time. The fragment shader uses view-dependent studio reflection lobes, metal tint, Fresnel response and thin barycentric seams. These are procedural reflections, not a claim of physically exact ray tracing.
 

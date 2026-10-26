@@ -39,6 +39,10 @@ public final class SettingsProvider extends ContentProvider {
     }
     cursor.addRow(
         schema
+            ? new Object[] {"show_clock", "Show clock", "boolean", "true", "false|true", false}
+            : new Object[] {"show_clock", Boolean.toString(prefs.getBoolean("show_clock", true))});
+    cursor.addRow(
+        schema
             ? new Object[] {
               "randomize_all", "Randomize all on start", "boolean", "false", "false|true", false
             }
@@ -58,9 +62,14 @@ public final class SettingsProvider extends ContentProvider {
       throw new IllegalArgumentException("Unsupported setting value");
     SharedPreferences.Editor editor =
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-    if ("randomize_all".equals(key)) editor.putBoolean(key, Boolean.parseBoolean(value));
-    else editor.putString(key, value);
-    editor.apply();
+    if ("show_clock".equals(key)) {
+      editor.putBoolean(key, Boolean.parseBoolean(value));
+      if (!editor.commit()) throw new IllegalStateException("Could not save clock visibility");
+    } else {
+      if ("randomize_all".equals(key)) editor.putBoolean(key, Boolean.parseBoolean(value));
+      else editor.putString(key, value);
+      editor.apply();
+    }
     return 1;
   }
 

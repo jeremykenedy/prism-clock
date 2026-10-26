@@ -11,12 +11,13 @@
 
 Show some love by [starring this repository on GitHub](https://github.com/jeremykenedy/prism-clock).
 
-Prism Clock shows actual local time over a continuously moving metallic surface. The final 1.0.0 build passed native emulator and physical Fire TV preview, settings and selected-Dream checks. See [verification](docs/verification.md) for measured performance and limits.
+Prism Clock shows a continuously moving metallic surface with an optional local clock. Version 1.1 adds a switch to hide the time, date and clock backing together. The clock stays visible by default, and the original surface design is preserved. Native controls and a natural idle Dream were checked on Fire TV; measured speed varies by hardware. See [verification](docs/verification.md) for evidence and limits.
 
 ## Table of Contents
 
 - [Requirements](#requirements)
 - [Installation](#installation)
+- [Fire TV Toolkit](#fire-tv-toolkit)
 - [Features](#features)
 - [Configuration](#configuration)
 - [Device Verification](#device-verification)
@@ -54,12 +55,26 @@ python3 install.py --serial YOUR_ADB_SERIAL --uninstall
 
 If Prism Clock is the selected screensaver, select another screensaver through the supported TV picker before removal. The installer has no prior Dream state to restore because it does not change selection or timers.
 
+## Fire TV Toolkit
+
+[Fire TV Toolkit](https://github.com/jeremykenedy/fire-tv-toolkit) offers guided TV setup, launcher choices, verified app updates, screensaver selection and sleep timers.
+
+```sh
+git clone https://github.com/jeremykenedy/fire-tv-toolkit.git
+cd fire-tv-toolkit
+node setup.js
+firetv-screensavers --install=prism-clock --yes
+firetv-set-screensaver --set=prism-clock --yes
+```
+
+Repeat the install command to update. Select another screensaver before removal, then use `firetv-screensavers --uninstall=prism-clock --yes --force`. Fire TV UI can open the installed app's native settings. Publication of a new saver version and its verified host catalog update are separate steps; see [integrations](docs/integrations.md).
+
 ## Features
 
 | Feature | What it does | Guide |
 | --- | --- | --- |
 | Moving metal | Deforming triangular surface with four studio-lit finishes | [Scene options](docs/configuration.md) |
-| Local clock | Actual 12/24-hour time, optional seconds/date and continuous travel | [Clock controls](docs/configuration.md) |
+| Local clock | Optional 12/24-hour time, seconds/date and continuous travel | [Clock controls](docs/configuration.md) |
 | Remote controls | Native settings, preview and offline credits | [Device verification](docs/verification.md) |
 | Host integration | App-owned settings schema with validated values | [Provider contract](docs/configuration.md) |
 
@@ -71,11 +86,13 @@ The app-owned host interface is `content://com.jeremykenedy.prismclock.settings/
 
 ## Device Verification
 
-| Environment | Resolution | Verified behavior | Status |
-| --- | --- | --- | --- |
-| Google TV API 34 emulator | 1920x1080 | Scene finishes, settings validation/persistence, full offline license/Close, Preview/Back/Home and bound Dream | Native routes passed |
-| Fire TV AFTDEC012E/API 30 | 1920x1080 | Maximum silver preset, minimum graphite selected non-test Dream and remote exits | 24.67 actual presents/s after warmup; limited headroom |
-| Other physical Android TV / Google TV | Unverified | None claimed | Device testing needed |
+| Version | Environment | Resolution | Verified behavior | Status |
+| --- | --- | --- | --- | --- |
+| 1.1 | Google TV API 34 emulator | 1920x1080 | Show clock ON/OFF, randomization independence, process-death persistence and same-instance Preview resume/Back | Native controls passed |
+| 1.1 | Fire TV AFTALMO/API 28 | 1920x1080 | Actual D-pad ON/OFF, Preview/Back and natural five-minute non-test Dream with overlay hidden | Functional checks passed; default scene measured about 17 to 18 presents/s |
+| 1.0 public | Google TV API 34 emulator | 1920x1080 | Scene finishes, settings validation/persistence, full offline license/Close, Preview/Back/Home and bound Dream | Native routes passed |
+| 1.0 public | Fire TV AFTDEC012E/API 30 | 1920x1080 | Maximum silver preset, minimum graphite selected non-test Dream and remote exits | 24.67 actual presents/s after warmup; limited headroom |
+| Unverified | Other physical Android TV / Google TV | Unverified | None claimed | Device testing needed |
 
 If you have an untested device, please report the model, OS/API, resolution, tested behavior and results through the repository's issue tracker. Emulator preview behavior does not prove automatic idle activation, vendor navigation, native 4K composition or sustained hardware performance.
 
@@ -105,14 +122,13 @@ CI builds unsigned review APKs and enforces the explicit host coverage, installe
 - [Native screenshot gallery](docs/screenshots.md)
 - [Ecosystem integrations](docs/integrations.md)
 - [Version 1.0.0 release guide](docs/releases/v1.0.0.md)
+- [Version 1.1.0 release guide](docs/releases/v1.1.0.md)
 
 ## Screenshots
 
-<table>
-<tr><td><img src="art/screenshots/physical-silver-preview.png" alt="Physical Fire TV silver surface with a large drifting clock" width="320"></td><td><img src="art/screenshots/physical-graphite-dream.png" alt="Physical selected graphite Dream with a smaller 12-hour clock" width="320"></td><td><img src="art/screenshots/credits-api34-credits.png" alt="Current offline credits on the API 34 emulator" width="320"></td></tr>
-</table>
+<table><tr><td><img src="art/screenshots/clock-hidden-fire-tv-api28.png" alt="Physical Fire TV prism surface with the entire clock overlay hidden"></td><td><img src="art/screenshots/clock-visible-fire-tv-api28.png" alt="Physical Fire TV prism surface with local time and date visible"></td><td><img src="art/screenshots/clock-toggle-fire-tv-api28.png" alt="Actual native Show clock switch turned off with the remote"></td></tr></table>
 
-The first two 1920x1080 captures show the exact 1.0.0 physical build; credits use the same APK on an API 34 emulator. See the [full current gallery](docs/screenshots.md) for settings, the complete license and artifact provenance.
+These unretouched 1920x1080 physical API 28 captures show the exact 1.1.0/code 4 native artifact. See the [full gallery](docs/screenshots.md) for emulator randomization cases and separately labeled historical 1.0 evidence.
 
 ## Privacy
 

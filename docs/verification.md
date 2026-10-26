@@ -1,4 +1,78 @@
-# Final 1.0.0 verification
+# Verification
+
+## 1.1 optional clock
+
+The final code 4 native candidate is 127,947 bytes, SHA-256
+`6d1a3204ca648033c3c0c1d68adcceb29e90ed1ff61ec24b7f65e1326b7621e8`.
+Its original production certificate remains
+`193b1650f1e3924088d6084932a4ec5fffe36ae95f6a8cb943bfa10c4bde4788`.
+The twelve-row settings interface adds Show clock, default true, with
+randomAllowed false. Off removes time, date, period marker and backing while
+leaving the surface moving. The renderer, mesh and both shaders are byte-identical
+in source to the published 1.0 design. This update adds visibility control and
+makes no performance-improvement claim.
+
+### Physical Fire TV API 28
+
+The exact code 4 signed APK replaced the preceding same-signer build in place.
+All twelve existing choices remained identical. Actual D-pad operation toggled
+Show clock OFF and ON, opened Preview through the native button and returned
+with Back. Current unretouched 1920x1080 images show the complete overlay absent,
+then local time/date visible, and the unchecked native switch. A separate 10-second
+OFF recording shows continuous deformation.
+
+At the default silver/gentle/medium/sculpted/balanced choices, three clean rolling
+content-SurfaceView windows measured 18.204 presents/s with the clock OFF.
+Clock ON measured 17.123 to 17.162 presents/s. Largest within-buffer gaps were
+about 66.70ms. Recording did not overlap these windows. This is a measured
+hardware limitation, not universal24/30FPS support or a thermal test. Version1.0
+was not independently timed on this same device.
+
+The earlier 1.1/code 2 runtime also passed actual natural idle activation after
+302.147 seconds, followed by 301.847 seconds bound as a normal, non-test
+PrismDreamService with the overlay hidden. Back exited. Six late rolling
+SurfaceView buffers measured 17.647 to 17.714 presents/s. The final code 4 APK has
+all code 2 ZIP payloads byte-identical except AndroidManifest.xml's version;
+its exact Preview/controls were checked, but natural idle was not repeated on4.
+These are separate observations and do not establish a continuous timing trace.
+
+Final code 4 cleanup compared 49 launcher preferences, 19 system values, surrounding
+APK hashes, readable providers, external backup/import bytes and existence,
+package and UID app-op modes, actual API 28 accessibility service listing and guard
+state. All matched. No timer, audio, account, network or permission changes were
+made. The original selected Black Dream was preserved. Prism was explicitly
+stopped after the final provider queries, and the TV returned awake on Main.
+
+### Google TV API 34 emulator
+
+The code 2 candidate verified the eleven-value upgrade, default-true new switch,
+actual D-pad ON/OFF, randomization independence, process-death persistence and
+same-ActivityRecord Preview Home/resume/Back. Both stored clock values survived
+randomize_all. The switch rejects random without mutation. The eight-second OFF
+native movie was independently played at normal speed with changing facets and
+no time, date, period marker or backing. These runtime payloads match code 4.
+
+The native gate restored launcher/system settings, surrounding query-readable
+providers and APK hashes, external bytes/existence, app-op modes, accessibility,
+network and stopped guard. The same AVD returned alive on Google Home. No
+physical-device, restart or account claims follow from emulator results.
+
+The first harness case-folded a button label incorrectly; it stopped and restored
+state before toggling. The first physical sampler looked for the package in a
+generic Dream layer name and produced no usable windows. Corrected observations
+above use actual runtime state and the observed layer, not zero-FPS guesses.
+
+### Scope
+
+The preserved original surface was visually accepted by the owner. This release
+fulfills the separate clock-visibility request. Faster rendering on the measured
+API 28 hardware remains open. Reboot persistence, sustained thermal/power behavior,
+native 4K and other physical Android TV/Google TV models remain unverified.
+Current screenshot provenance is linked in the [gallery](screenshots.md).
+Primary-branch CI, signed publication and both host integrations are separate
+release gates recorded in the [checkpoint](checkpoint.md).
+
+## Historical final 1.0.0 verification
 
 ## October 22 physical Fire TV
 

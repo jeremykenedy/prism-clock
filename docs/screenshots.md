@@ -1,5 +1,23 @@
 # Native screenshots
 
+## Physical 1.1 optional clock
+
+These unretouched 1920x1080 Fire TV AFTALMO/API 28 images show the final code 4 native artifact. Actual remote input changed the switch; the scene keeps its original rendering. [Physical provenance](../art/screenshots/optional-clock-fire-tv-api28.json).
+
+<table><tr><td><img src="../art/screenshots/clock-hidden-fire-tv-api28.png" alt="Physical native surface with all clock information hidden"></td><td><img src="../art/screenshots/clock-visible-fire-tv-api28.png" alt="Physical native surface with clock and date visible"></td><td><img src="../art/screenshots/clock-toggle-fire-tv-api28.png" alt="Physical native Show clock switch disabled by remote"></td></tr></table>
+
+## API 34 randomization and lifecycle
+
+These 1.1.0/code 2 API 34 captures show the actual same-signer runtime candidate
+`af3f00a2e9fb472c824d9279baa31420e7a9f8ab867cf135a662614f4838cf19`.
+D-pad selection exercised the switch. Off removes time, date, period marker and
+the clock backing while the surface continues moving. Independent normal-speed
+moving review passed; code 4 runtime payloads are identical except version metadata. [Current provenance](../art/screenshots/optional-clock-api34.json).
+
+<table><tr><td><img src="../art/screenshots/optional-clock-off-api34.png" alt="Current native prism surface with all clock text and backing off"></td><td><img src="../art/screenshots/optional-clock-on-api34.png" alt="Current native local time, seconds, period marker and date on"></td><td><img src="../art/screenshots/optional-clock-settings-api34.png" alt="Native settings with Show clock checked by default"></td></tr><tr><td><img src="../art/screenshots/optional-clock-on-random-api34.png" alt="Stored Show clock on remains visible under randomize all"></td><td><img src="../art/screenshots/optional-clock-off-random-api34.png" alt="Stored Show clock off remains word free under randomize all"></td><td></td></tr></table>
+
+## Historical 1.0 release evidence
+
 The final 1.0.0/code 1 APK is 127,947 bytes, SHA-256 `edbf475c4a2b253ccc069adaee8cac2cbba4d16b5579d5299e2e2d1bdaa21fd5`. Physical images use Fire TV AFTDEC012E/API 30. Credits/settings use Google TV API 34. Every capture is 1920x1080.
 
 <table>
