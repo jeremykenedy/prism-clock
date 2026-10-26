@@ -71,11 +71,12 @@ The app-owned host interface is `content://com.jeremykenedy.prismclock.settings/
 
 ## Device Verification
 
-| Environment | Resolution | Verified behavior | Status |
-| --- | --- | --- | --- |
-| Google TV API 34 emulator | 1920x1080 | Scene finishes, settings validation/persistence, full offline license/Close, Preview/Back/Home and bound Dream | Native routes passed |
-| Fire TV AFTDEC012E/API 30 | 1920x1080 | Maximum silver preset, minimum graphite selected non-test Dream and remote exits | 24.67 actual presents/s after warmup; limited headroom |
-| Other physical Android TV / Google TV | Unverified | None claimed | Device testing needed |
+| Version | Environment | Resolution | Verified behavior | Status |
+| --- | --- | --- | --- | --- |
+| 1.1 development | Google TV API 34 emulator | 1920x1080 | Show clock ON/OFF, randomization independence, process-death persistence and same-instance Preview resume/Back | Native controls passed; physical gate pending |
+| 1.0 public | Google TV API 34 emulator | 1920x1080 | Scene finishes, settings validation/persistence, full offline license/Close, Preview/Back/Home and bound Dream | Native routes passed |
+| 1.0 public | Fire TV AFTDEC012E/API 30 | 1920x1080 | Maximum silver preset, minimum graphite selected non-test Dream and remote exits | 24.67 actual presents/s after warmup; limited headroom |
+| Unverified | Other physical Android TV / Google TV | Unverified | None claimed | Device testing needed |
 
 If you have an untested device, please report the model, OS/API, resolution, tested behavior and results through the repository's issue tracker. Emulator preview behavior does not prove automatic idle activation, vendor navigation, native 4K composition or sustained hardware performance.
 
