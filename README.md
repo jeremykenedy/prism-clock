@@ -11,7 +11,7 @@
 
 Show some love by [starring this repository on GitHub](https://github.com/jeremykenedy/prism-clock).
 
-Prism Clock shows actual local time over a continuously moving metallic surface. The final 1.0.0 build passed native emulator and physical Fire TV preview, settings and selected-Dream checks. See [verification](docs/verification.md) for measured performance and limits.
+Prism Clock shows a continuously moving metallic surface with an optional local clock. The clock stays visible by default. Version 1.1 is in development; its new switch has emulator evidence and awaits final physical verification. The final 1.0.0 build passed native emulator and physical Fire TV preview, settings and selected-Dream checks. See [verification](docs/verification.md) for measured performance and limits.
 
 ## Table of Contents
 
@@ -59,7 +59,7 @@ If Prism Clock is the selected screensaver, select another screensaver through t
 | Feature | What it does | Guide |
 | --- | --- | --- |
 | Moving metal | Deforming triangular surface with four studio-lit finishes | [Scene options](docs/configuration.md) |
-| Local clock | Actual 12/24-hour time, optional seconds/date and continuous travel | [Clock controls](docs/configuration.md) |
+| Local clock | Optional 12/24-hour time, seconds/date and continuous travel | [Clock controls](docs/configuration.md) |
 | Remote controls | Native settings, preview and offline credits | [Device verification](docs/verification.md) |
 | Host integration | App-owned settings schema with validated values | [Provider contract](docs/configuration.md) |
 
@@ -108,11 +108,11 @@ CI builds unsigned review APKs and enforces the explicit host coverage, installe
 
 ## Screenshots
 
-<table>
-<tr><td><img src="art/screenshots/physical-silver-preview.png" alt="Physical Fire TV silver surface with a large drifting clock" width="320"></td><td><img src="art/screenshots/physical-graphite-dream.png" alt="Physical selected graphite Dream with a smaller 12-hour clock" width="320"></td><td><img src="art/screenshots/credits-api34-credits.png" alt="Current offline credits on the API 34 emulator" width="320"></td></tr>
-</table>
+<table><tr><td><img src="art/screenshots/optional-clock-off-api34.png" alt="Native moving prism surface with clock fully hidden"></td><td><img src="art/screenshots/optional-clock-on-api34.png" alt="Native prism surface with local time and date visible"></td><td><img src="art/screenshots/optional-clock-settings-api34.png" alt="Native Show clock switch enabled by default"></td></tr></table>
 
-The first two 1920x1080 captures show the exact 1.0.0 physical build; credits use the same APK on an API 34 emulator. See the [full current gallery](docs/screenshots.md) for settings, the complete license and artifact provenance.
+These 1920x1080 API 34 captures show the exact unreleased 1.1.0/code 2 candidate.
+See the [full gallery](docs/screenshots.md) for current randomization cases and
+separately labeled historical 1.0 physical evidence.
 
 ## Privacy
 

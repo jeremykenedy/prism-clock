@@ -1,4 +1,44 @@
-# Final 1.0.0 verification
+# Verification
+
+## Unreleased 1.1 optional clock native gate
+
+The frozen 1.1.0/code 2 candidate is 127,947 bytes, SHA-256
+`af3f00a2e9fb472c824d9279baa31420e7a9f8ab867cf135a662614f4838cf19`,
+with the original production certificate
+`193b1650f1e3924088d6084932a4ec5fffe36ae95f6a8cb943bfa10c4bde4788`.
+The in-place API 34 upgrade retained the eleven existing values and resolved
+the new boolean show_clock to true. The twelve-row schema reports boolean,
+default true and randomAllowed false; random is rejected without mutation.
+
+Actual D-pad operation switched the clock off and on. Off native captures have
+no time, date, period marker or backing; the eight-second recording preserves
+the continuously changing GL scene. Independent movie review is pending.
+Both stored boolean values remained unchanged under randomize_all. A separate
+process-death check retained false and true after force-stop, process exit and
+a fresh provider query. Home/reorder-to-front resumed the same ActivityRecord,
+and Back returned to Settings. No selected Dream was changed or tested.
+
+The first navigation harness compared an uppercase Android button label with
+mixed-case text and sent Up instead of Down. It stopped before toggling, with
+strict cleanup. The corrected case-folded harness used fresh XML at each step;
+that failure is not attributed to app navigation.
+
+Cleanup restored all twelve current Prism values, fourteen live UI values,
+fifteen observed system values, available surrounding providers, twenty-nine
+other APK hashes, exact external file bytes/existence and both app-op scopes.
+Accessibility health, network and stopped guard were retained. Prism and
+Skycast were force-stopped and the same AVD remained alive at Google Home.
+The first run separately establishes original eleven-value upgrade retention;
+the second run began with twelve post-upgrade values. No physical TV calls,
+restarts, account, audio, sleep or selected-Dream changes occurred.
+
+Local signed build, manifest/offline boundary, Java/Python/shell style and
+installer checks passed. Owned host logic covers 67 lines and 66 branches at
+100%; all 25 installer tests pass at 100% line/branch coverage. Renderer, mesh,
+clock math, shaders and scene assets are unchanged. Final physical verification,
+current public gallery review and primary-branch release gates remain pending.
+
+## Historical final 1.0.0 verification
 
 ## October 22 physical Fire TV
 

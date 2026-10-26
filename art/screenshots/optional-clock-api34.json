@@ -1,0 +1,87 @@
+[
+  {
+    "file": "art/screenshots/optional-clock-off-api34.png",
+    "sha256": "77994f96842bea2605971d03d63b280e5ae9c4c840fdf898055604dcca163db4",
+    "platform": "Google TV emulator API34",
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "versionName": "1.1.0",
+    "versionCode": 2,
+    "apkSha256": "af3f00a2e9fb472c824d9279baa31420e7a9f8ab867cf135a662614f4838cf19",
+    "route": "PreviewActivity",
+    "captureWrittenUtc": "2026-10-26T08:07:41.993237+00:00",
+    "case": "Show clock off; date and seconds stored on",
+    "inspection": "Saved PNG opened and visually inspected before inclusion",
+    "limits": "Not physical Dream or performance evidence"
+  },
+  {
+    "file": "art/screenshots/optional-clock-on-api34.png",
+    "sha256": "38aceeb15b97dd8fa908de1fb2e3794be049fb56193576f851362b27a96234b0",
+    "platform": "Google TV emulator API34",
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "versionName": "1.1.0",
+    "versionCode": 2,
+    "apkSha256": "af3f00a2e9fb472c824d9279baa31420e7a9f8ab867cf135a662614f4838cf19",
+    "route": "PreviewActivity",
+    "captureWrittenUtc": "2026-10-26T08:08:00.813455+00:00",
+    "case": "Show clock on; date, seconds and period marker visible",
+    "inspection": "Saved PNG opened and visually inspected before inclusion",
+    "limits": "Not physical Dream or performance evidence"
+  },
+  {
+    "file": "art/screenshots/optional-clock-settings-api34.png",
+    "sha256": "059bce4c88f775d4cd633a01e069d01da222e6fbf200a9820ea10a055b187c49",
+    "platform": "Google TV emulator API34",
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "versionName": "1.1.0",
+    "versionCode": 2,
+    "apkSha256": "af3f00a2e9fb472c824d9279baa31420e7a9f8ab867cf135a662614f4838cf19",
+    "route": "SettingsActivity",
+    "captureWrittenUtc": "2026-10-26T08:06:41.335575+00:00",
+    "case": "Actual settings before controlled changes",
+    "inspection": "Saved PNG opened and visually inspected before inclusion",
+    "limits": "Not physical Dream or performance evidence"
+  },
+  {
+    "file": "art/screenshots/optional-clock-on-random-api34.png",
+    "sha256": "68806d6755fe212afed03896390ce928d99252956236b222dc5835576b8aac9d",
+    "platform": "Google TV emulator API34",
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "versionName": "1.1.0",
+    "versionCode": 2,
+    "apkSha256": "af3f00a2e9fb472c824d9279baa31420e7a9f8ab867cf135a662614f4838cf19",
+    "route": "PreviewActivity",
+    "captureWrittenUtc": "2026-10-26T08:08:10.291052+00:00",
+    "case": "Stored Show clock on with randomize_all true",
+    "inspection": "Saved PNG opened and visually inspected before inclusion",
+    "limits": "Not physical Dream or performance evidence"
+  },
+  {
+    "file": "art/screenshots/optional-clock-off-random-api34.png",
+    "sha256": "8579ab9710aa88cd2d1db3f16c4f300a71a9f4bc0a37304fb5b96fab13b17418",
+    "platform": "Google TV emulator API34",
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "versionName": "1.1.0",
+    "versionCode": 2,
+    "apkSha256": "af3f00a2e9fb472c824d9279baa31420e7a9f8ab867cf135a662614f4838cf19",
+    "route": "PreviewActivity",
+    "captureWrittenUtc": "2026-10-26T08:08:21.696101+00:00",
+    "case": "Stored Show clock off with randomize_all true",
+    "inspection": "Saved PNG opened and visually inspected before inclusion",
+    "limits": "Not physical Dream or performance evidence"
+  }
+]
